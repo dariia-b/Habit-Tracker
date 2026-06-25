@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="header">
+            <h1>Dashboard</h1>
+        </div>
+
+        <div class="section" name="complete_table">
+                <table class="dashboard">
+                    <thead>
+                        <tr>
+                            <th class="habit-header dashboard-cell">Name</th>
+
+                            {% for day in range(1, days + 1) %}
+                            <th class="day-header dashboard-cell">{{ day}}</th>
+                            {% endfor %}
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for habit in dashboard %}
+                        <tr>
+                            <td class="label dashboard-cell"> {{ habit["name"] }} </td>
+
+                            {% for day in range(1, days + 1) %}
+
+                                {% if "%04d-%02d-%02d"|format(year, month, day) in habit["date"] %}
+                                <td class="completed dashboard-cell"></td>
+                                {% else %}
+                                <td class="not-completed dashboard-cell"></td>
+                                {% endif %}
+
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+{% endblock %}

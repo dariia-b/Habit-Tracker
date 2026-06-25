@@ -1,0 +1,183 @@
+:root {
+    --primary: #DCD6F7;
+    --primary-low-opacity: rgb(220, 214, 247, 0.5);
+    --secondary: #A6B1E1;
+    --background: #F4EEFF;
+    --dark-tone: #424874;
+    --text: black;
+    --tone: #d0d6ea;
+    --progress-bar: #e6e1f9;
+}
+
+
+
+
+body {
+    background-color: var(--background);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: bold;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button, .btn {
+    transition-duration: 0.4s;
+    background-color: var(--primary);
+    border: none;
+    color: black;
+}
+
+
+button:hover, .btn:hover {
+    background-color: var(--secondary);
+}
+
+/* dashboard */
+table, th, td {
+    text-align: center;
+}
+
+.dashboard, .dashboard-cell {
+    border: 1px solid;
+    padding: 10px;
+}
+
+.dashboard tr{
+    transition: box-shadow 0.2 ease;
+}
+
+.dashboard tr:hover{
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);;
+}
+
+table {
+    table-layout: fixed;
+    width: 1000px;
+}
+.label {
+    text-align: left;
+}
+
+.day-header {
+    background-color: var(--primary);
+    width: 40px;
+}
+
+.habit-header {
+    background-color: var(--primary);
+    width: 150px;
+}
+
+.completed {
+    background-color: var(--secondary);
+}
+
+/* index */
+
+.index {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.table-secondary th, .table-primary th, .tag {
+    display: none;
+}
+
+.gallery {
+    display: flex;
+    width: auto;
+    max-width: 1000px;
+    gap: 30px;
+    flex-wrap: wrap;
+
+}
+
+
+.card-complete, .index-info {
+    display: flex;
+    width: auto;
+    max-width: 1000px;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.index-info {
+    gap: 5px;
+}
+
+.index-info .card {
+    background-color: var(--primary-low-opacity);
+    width: 250px;
+}
+.card.progress-card {
+    width: 400px;
+}
+
+.progress-bar {
+    background-color: rgb(166, 177, 225);
+
+}
+
+.card-complete .card-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-complete .card {
+    transition: transform 0.2s, box-shadow 0.2s ease;
+}
+
+.card-complete .card:hover {
+    transform: translate(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.btn-undo {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.btn-undo:hover {
+    background-color: var(--primary);
+    color: black;
+}
+
+/* edit habits */
+
+
+.secondary-header {
+    display: none;
+}
+
+.edit {
+    gap: 50px;
+    width: 1000px;
+}
+
+.edit h2 {
+    align-self: flex-start;
+}
+
+.add-form {
+    width: 300px;
+}
+
+
+.edit-form form{
+    display: flex;
+    gap: 10px;
+    width: 1000px;
+}

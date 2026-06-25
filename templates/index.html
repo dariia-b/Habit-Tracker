@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Habit Tracker
+{% endblock %}
+
+{% block main %}
+    <div class="container index">
+        <div class="header">
+            <h1>Habit Tracker</h1>
+        </div>
+
+        <div class="index-info">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-section">
+                        <h3>{{count_total}}</h3>
+                        <p>habits total</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-section">
+                        <h3>{{count_today}}</h3>
+                        <p>habits completed today</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card progress-card">
+                <div class="card-body">
+                    <div class="card-section">
+                        <h3>Today's progress: </h3>
+                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="{{count_today}}" aria-valuemin="0" aria-valuemax="{{count_total}}">
+                            <div class="progress-bar" style="width: {{percentage}}%">{{percentage}}%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+        <h2 class="header">To do:</h2>
+        <div class="gallery">
+
+            <div class="card-complete">
+
+                {% for habit in habits %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <div class="card-section">
+                            <h3 class="card-title"> {{habit["name"]}}</h3>
+                            <form action="/toggle" method="post">
+                                <input type="hidden" name="habit_id" value = "{{ habit["id"] }}">
+
+                                    {% if habit.completed %}
+                                    <button class="btn btn-primary btn-undo"><i class="bi bi-x-lg"></i></button>
+                                    {% else %}
+                                    <button class="btn btn-primary btn-complete" type="submit"><i class="bi bi-check2"></i></button>
+                                    {% endif %}
+
+                            </form>
+                        </div>
+                        <p class="card-text">{{habit["tag"]}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+    </div>
+    </div>
+
+{% endblock %}

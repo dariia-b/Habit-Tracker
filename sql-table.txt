@@ -1,0 +1,22 @@
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    username TEXT NOT NULL UNIQUE,
+    hash TEXT NOT NULL
+);
+
+CREATE TABLE habits (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    name TEXT NOT NULL,
+    tag TEXT,
+    user_id INTEGER NOT NULL,
+    FOREIGN KEY(user_id) references users(id)
+);
+
+CREATE TABLE completions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    habit_id INTEGER NOT NULL,
+    date NUMERIC NOT NULL,
+    user_id INTEGER NOT NULL,
+    FOREIGN KEY (habit_id) references habits(id),
+    FOREIGN KEY(user_id) references users(id)
+);

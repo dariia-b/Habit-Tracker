@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Manage habits
+{% endblock %}
+
+{% block main %}
+
+    <div class="container edit">
+        <div class="header">
+            <h1>Manage habits</h1>
+        </div>
+
+        <div class="section edit-form">
+            <h2 class="header">Add a new habit: </h2>
+            <form action="/create" method="post">
+                <input class="add-form form-control" name="name" placeholder="e.g. Stretch, Drink water" type="text">
+                <input class="add-form form-control" name="tag" placeholder="Tag" type="test">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="section">
+            <h2 class="header">Edit your habits: </h2>
+            <table class="edit-table">
+                <thead>
+                    <tr>
+                        <th>Habit</th>
+                        <th>Tag</th>
+                        <th class="secondary-header"> / </th>
+                        <th class="secondary-header"> / </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for habit in habits %}
+                        <tr>
+                            <td class="label"><span id="{{ habit['id'] }}"> {{ habit["name"] }}</span></td>
+                            <td> {{ habit["tag"] }} </td>
+
+                            <td>
+                                <button class="btn btn-primary" type="button" value="{{ habit['id'] }}" onclick="renameHabit(this.value)">
+                                    Rename
+                                </button>
+                            </td>
+                            <td>
+                                <form action="/delete" method="post">
+                                    <input type="hidden" name="habit_id" value = "{{ habit["id"] }}">
+                                    <button class="btn btn-primary" type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
